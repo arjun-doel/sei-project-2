@@ -1,13 +1,12 @@
-import React from 'react'
+// import React from 'react'
 
-const Home = () {
+// const Home = () {
 
-  return (
-// button 
+//   return (
+//     <>
+//       <h6> Hello!</h6>
+//     </>
 
-// 
+// }
 
-  )
-
-}
-export default Home 
+// export default Home

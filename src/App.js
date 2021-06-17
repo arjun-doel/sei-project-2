@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Card from './component/Card'
 import Nav from './component/common/Nav'
 import SearchBar from './component/SearchBar'
+import Footer from './component/common/Footer'
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         </Switch>
 
       </BrowserRouter>
+      <Footer/>
     </>
   )
 }
