@@ -24,6 +24,7 @@
 //import axios from 'axios'
 //import GenreCard from './CheeseCard'
 //! Have a carousel effect. Read materialize docs.
+//? https://materializecss.com/carousel.html will be in the card comp.
 
 //? Card Componenet
 //import React from 'react'
