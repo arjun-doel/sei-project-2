@@ -1,13 +1,25 @@
 import React from 'react'
-
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Card from './component/Card'
+import Nav from './component/common/Nav'
 
 
 const App = () => {
 
   return (
-    <div className="container">
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <BrowserRouter>
+
+        <Nav />
+        <Card />
+        <Switch>
+          <Route>
+            
+          </Route>
+        </Switch>
+
+      </BrowserRouter>
+    </>
   )
 }
 
