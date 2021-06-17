@@ -17,7 +17,6 @@ const SearchBar = () => {
     getData()
 
   }, [])
-  console.log(getEvents)
 
 
   // const getUserInput = e => {
@@ -28,11 +27,13 @@ const SearchBar = () => {
 
   return (
     <>
+    
       <div className="container">
         <div className="row">
           {getEvents.map(ite =>
             <div className="col s6" key={ite.id}>
               <Card
+                {...getEvents}
                 id={ite.id}
                 name={ite.name}
                 date={ite.dates.start.localDate}

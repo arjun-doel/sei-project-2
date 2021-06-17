@@ -1,31 +1,51 @@
-import React, { useState } from 'react'
-// import ModalEvent from './ModalEvent'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import MyVerticallyCenteredModal from './MyVerticallyCenteredModal'
+
 
 
 const Card = ({ name, date, image, id }) => {
-  const [getIDs, setIDs] = useState('')
-  const [isModal, setIsModal] = useState(false)
+  const [modalShow, setModalShow] = useState(false)
+  const [getEvents, setEvents] = useState([])
+  const [modalID, setModalID] = useState('')
 
-  const triggerModal = e => {
-    setIDs(e.target.id)
-    setIsModal(true)
+  useEffect(() => {
+    const getData = async () => {
+      const apiKey = 'gCK1UZiAtKeL5bTCeol9GN91BXQYtQFa'
+      const { data } = await axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=GB&apikey=${apiKey}`)
+      // setEvents(data._embedded.events)
+      const filteredData = data._embedded.events.filter(ite => ite.id === modalID)
+      console.log(filteredData)
+      setEvents(filteredData)
+    }
+    getData()
+  }, [modalID])
+  
+  console.log(getEvents)
+
+  
+
+  const loadModal = e => {
+    setModalID(e.target.id)
+    setModalShow(true)
   }
-
-  console.log(getIDs)
-  console.log(isModal)
 
   return (
     <>
+      <MyVerticallyCenteredModal
+        {...getEvents}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <div className="card hoverable">
         <div className="card-image">
-          <img onClick={triggerModal} className="responsive-img" src={image} alt={name} id={id} />
+          <img onClick={loadModal} className="responsive-img" src={image} alt={name} id={id} />
           <span className="card-title">{name}</span>
           <a href="" className="btn-floating halfway-fab waves-effect waves-light red"><i className="far fa-heart hoverable"></i></a>
         </div>
         <div className="card-content">
           <p>{date}</p>
         </div>
-        {/* <button className="ui button">Show Modal</button> */}
       </div>
     </>
   )
